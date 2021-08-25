@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCell" rowHeight="150" id="dkq-Aj-wRd" userLabel="NameCell" customClass="NameCell" customModule="PokemonApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCell" rowHeight="150" id="dkq-Aj-wRd" userLabel="NameCell" customClass="NameCell" customModule="PokemonApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dkq-Aj-wRd" id="MHQ-jY-kAh">
@@ -24,27 +24,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsn-b6-9WW" userLabel="NameLabel">
-                                            <rect key="frame" x="183" y="11" width="187" height="128"/>
+                                            <rect key="frame" x="203" y="11" width="41.333333333333343" height="128"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="clU-Xl-pJ0">
-                                            <rect key="frame" x="13" y="15" width="120" height="120"/>
+                                            <rect key="frame" x="20" y="0.0" width="120" height="150"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="120" id="05q-KN-Euw"/>
-                                                <constraint firstAttribute="width" constant="120" id="W4D-8V-wux"/>
+                                                <constraint firstAttribute="height" constant="120" id="Rxt-bd-Mhu"/>
+                                                <constraint firstAttribute="width" constant="120" id="TsB-uR-7Wa"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="bsn-b6-9WW" firstAttribute="leading" secondItem="clU-Xl-pJ0" secondAttribute="trailing" constant="50" id="2iT-q7-EYi"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="bsn-b6-9WW" secondAttribute="trailing" id="KvL-5O-4o0"/>
-                                        <constraint firstItem="clU-Xl-pJ0" firstAttribute="leading" secondItem="MHQ-jY-kAh" secondAttribute="leading" constant="13" id="cRW-2Z-AhE"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="bsn-b6-9WW" secondAttribute="bottom" id="kaD-rN-hjC"/>
-                                        <constraint firstItem="clU-Xl-pJ0" firstAttribute="centerY" secondItem="MHQ-jY-kAh" secondAttribute="centerY" id="lZ2-Yg-Jif"/>
-                                        <constraint firstItem="bsn-b6-9WW" firstAttribute="top" secondItem="MHQ-jY-kAh" secondAttribute="topMargin" id="p3T-LK-M6T"/>
-                                        <constraint firstItem="bsn-b6-9WW" firstAttribute="centerY" secondItem="MHQ-jY-kAh" secondAttribute="centerY" id="wTA-fd-uFA"/>
+                                        <constraint firstItem="clU-Xl-pJ0" firstAttribute="centerY" secondItem="MHQ-jY-kAh" secondAttribute="centerY" id="6lQ-WY-r1F"/>
+                                        <constraint firstAttribute="bottom" secondItem="clU-Xl-pJ0" secondAttribute="bottom" id="7LC-9k-Q9a"/>
+                                        <constraint firstItem="bsn-b6-9WW" firstAttribute="leading" secondItem="clU-Xl-pJ0" secondAttribute="trailing" constant="63" id="IK6-Fa-g2c"/>
+                                        <constraint firstItem="bsn-b6-9WW" firstAttribute="bottom" secondItem="MHQ-jY-kAh" secondAttribute="bottomMargin" id="P3O-Vw-9Q7"/>
+                                        <constraint firstItem="bsn-b6-9WW" firstAttribute="top" secondItem="MHQ-jY-kAh" secondAttribute="topMargin" id="U7N-ha-ed1"/>
+                                        <constraint firstItem="clU-Xl-pJ0" firstAttribute="leading" secondItem="MHQ-jY-kAh" secondAttribute="leading" constant="20" id="nqN-oX-JfF"/>
+                                        <constraint firstItem="clU-Xl-pJ0" firstAttribute="top" secondItem="MHQ-jY-kAh" secondAttribute="top" id="pVL-40-icH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
