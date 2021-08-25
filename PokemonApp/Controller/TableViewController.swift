@@ -11,9 +11,6 @@ private let reuseIdentifier = "NameCell"
 
 class TableViewController: UITableViewController {
     
-    //var pokemon: [Pokemon] = []
-    //var pokemon: [Form] = []
-    //var names: [String] = []
     var pokemon: [Result] = []
     var sprite: Sprite?
     var spriteURLList: [String] = []
@@ -39,8 +36,6 @@ class TableViewController: UITableViewController {
         
         loadData()
         loadImages()
-        //print("Sprite - \(spriteURLList[0].front_default)")
-        //print("Pokemon- \(pokemon[0])")
 
     }
     
@@ -67,18 +62,7 @@ class TableViewController: UITableViewController {
             imageURL = "https://pokeapi.co/api/v2/pokemon-form/\(index)/"
             
             spriteURLList.append(imageURL!)
-            //print(imageURL!)
-            
-            /*
-            if let url = URL(string: imageURL!) {
-                if let data = try? Data(contentsOf: url) {
-                    parseImageJSON(json: data)
-                    //return
-                }
-            }
-            */
-            
-            //fetchImage(urlString: spriteURLList[spriteIndex].front_default)
+
             print(spriteIndex)
             spriteIndex += 1
                        
@@ -93,64 +77,9 @@ class TableViewController: UITableViewController {
             pokemon.append(contentsOf: jsonResults.results)
         }
     }
-    
-    /*
-    func parseImageJSON(json: Data) {
-        let decoder = JSONDecoder()
-        
-        if let jsonResults = try? decoder.decode(PokemonDetails.self, from: json) {
-            //pokemon = jsonResults.results
-            //sprite.append(contentsOf: jsonResults.sprites)
-            sprite = jsonResults.sprites
-            spriteURLList.append(sprite!)
-            
-            //view.reloadInputViews()
-        }
-    }
-    */
-    /*
-    func fetchImage(urlString: String) {
-        // Get data
-        guard let url = URL(string: urlString) else {
-            fatalError("Could not load urlString")
-        }
-        
-        // Convert data to image
-        let getDataTask = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-            DispatchQueue.main.async {
-                // Set image to image View
-                let imageData = UIImage(data: data)!
-                self.sprites.append(imageData)
-                
-            }
-        }
-        
-        getDataTask.resume()
-    }
-    */
-    
-    
-    /*
-    func fetchImage(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.sprites.append(image)
-                    }
-                }
-            }
-        }
-    }
-    */
-    
-    
+     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pokemon.count
-        //names.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -160,13 +89,10 @@ class TableViewController: UITableViewController {
         
         let pokemon = pokemon[indexPath.row]
         let url = spriteURLList[indexPath.row]
-        //let image = sprites[indexPath.row]
-        //let name = names[indexPath.row]
+
         cell.nameLabel.text = pokemon.name
-        //cell.fetchImage(urlString: url.front_default)
         cell.networkCall(imageURL: url)
-        //cell.sprite.image = image
-        //cell.nameLabel.text = name
+
         return cell
     }
 
