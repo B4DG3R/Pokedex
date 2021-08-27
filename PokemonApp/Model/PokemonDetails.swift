@@ -8,6 +8,5 @@
 import Foundation
 
 struct PokemonDetails: Codable {
-    //var name: String
     var sprites: Sprite
 }

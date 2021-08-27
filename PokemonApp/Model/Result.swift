@@ -10,7 +10,4 @@ import Foundation
 struct Result: Codable {
     var name: String
     var url: String
-    
-    //var name: String
-    //var sprites: [Sprite]
 }
