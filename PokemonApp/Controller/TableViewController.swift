@@ -13,12 +13,21 @@ class TableViewController: UITableViewController {
     
     var pokemon: [Result] = []
     var sprite: Sprite?
+    
+    // Holds list of sprite URLs to be passed to the nameCell class
     var spriteURLList: [String] = []
     var sprites: [UIImage] = []
     var count = 0
     
     var nameURL: String?
     var imageURL: String?
+    
+    // Cell tapped data
+    var pokemonNumber: Int?
+    var pokemonBaseExp: Int?
+    var pokemonType: [Type] = []
+    var pokemonTypeDetails: [TypeDetails] = []
+    var pokemonAbilities: [Ability] = []
     
     @IBOutlet weak var nameLabel: UILabel!
 
@@ -27,12 +36,6 @@ class TableViewController: UITableViewController {
         // Do any additional setup after loading the view.
                 
         title = "Pokedex"
-        //navigationController?.navigationBar.prefersLargeTitles = true
-        
-        //var urlString = "https://pokeapi.co/api/v2/pokemon/"
-        //urlString = "https://pokeapi.co/api/v2/pokemon/?offset=\(count)&;amp;limit=20"
-        //var descriptionURL = "https://pokeapi.co/api/v2/pokemon/bulbasaur"
-        //var formURL = "https://pokeapi.co/api/v2/pokemon-form/1/"
         
         loadNameData()
         loadImageURL()
@@ -45,14 +48,11 @@ class TableViewController: UITableViewController {
         for _ in 0...55 {
             nameURL = "https://pokeapi.co/api/v2/pokemon/?offset=\(count)&;amp;limit=20"
             count += 20
-            print(count)
-            print(nameURL)
             
             // This is the actual network call which collects the data
             if let url = URL(string: nameURL!) {
                 if let data = try? Data(contentsOf: url) {
                     parse(json: data)
-                    //return
                 }
             }
         }
@@ -64,13 +64,10 @@ class TableViewController: UITableViewController {
     func loadImageURL() {
         var spriteIndex = 0
         for index in 1...1118 {
-            imageURL = "https://pokeapi.co/api/v2/pokemon-form/\(index)/"
             
+            imageURL = "https://pokeapi.co/api/v2/pokemon-form/\(index)/"
             spriteURLList.append(imageURL!)
-
-            print(spriteIndex)
             spriteIndex += 1
-                       
         }
     }
     
@@ -79,7 +76,7 @@ class TableViewController: UITableViewController {
         let decoder = JSONDecoder()
         
         if let jsonResults = try? decoder.decode(Results.self, from: json) {
-            //pokemon = jsonResults.results
+            
             pokemon.append(contentsOf: jsonResults.results)
         }
     }
@@ -106,13 +103,44 @@ class TableViewController: UITableViewController {
         let pokemon = pokemon[indexPath.row]
         let url = spriteURLList[indexPath.row]
         
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "DetailViewController", creator: { coder in
-            return DetailViewController (coder: coder, name: pokemon.name, number: pokemon., spriteURL: url, type: String, abilities: String)
+        // Parses the selected pokemon data
+        cellToBePassedTappedData(pokeURL: pokemon.url)
+        
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "DetailViewController", creator: { [self] coder in
+            return DetailViewController (coder: coder, name: pokemon.name, number: pokemonNumber!, spriteURL: url, experience: pokemonBaseExp!, type: pokemonType, abilities: pokemonAbilities)
         }) else {
             fatalError("Detail View Controller not found.")
         }
         
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func cellToBePassedTappedData(pokeURL: String) {
+        // This is the actual network call which collects the data
+        if let url = URL(string: pokeURL) {
+            if let data = try? Data(contentsOf: url) {
+                
+                parsePokemonData(json: data)
+            }
+        }
+    }
+    
+    func parsePokemonData(json: Data) {
+        let decoder = JSONDecoder()
+        
+        // this is where I got stuck.  The data for the pokemon abilities and type is nested JSON and
+        // i have never had to parse this before and I have run out of time, but i know that this is the
+        // problem.
+        
+        if let jsonResults = try? decoder.decode(Abilities.self, from: json) {
+            pokemonBaseExp = jsonResults.base_experience
+            pokemonAbilities = jsonResults.abilities
+            pokemonNumber = jsonResults.id
+        }
+        
+        if let jsonResults = try? decoder.decode(Types.self, from: json) {
+            pokemonType = jsonResults.types
+        }
     }
 }
 

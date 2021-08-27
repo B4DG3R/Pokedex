@@ -8,5 +8,5 @@
 import Foundation
 
 struct Forms: Codable {
-    var forms: [Form]
+    var forms: Form
 }

@@ -12,23 +12,27 @@ class DetailViewController: UIViewController {
     var pokemonName: String
     var pokemonNumber: Int
     var pokemonSpriteURL: String
-    var pokemonTypeDescription: String
-    var pokemonAbilitiesDescription: String
+    var pokemonBaseExp: Int
+    var pokemonTypeDescription: [Type]
+    var pokemonAbilitiesDescription: [Ability]
     
     var sprite: Sprite?
     
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var numberLabel: UILabel?
     @IBOutlet weak var spriteImageView: UIImageView?
+    @IBOutlet weak var baseExpLabel: UILabel!
+    @IBOutlet weak var baseExpDescriptionLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel?
     @IBOutlet weak var typeDescriptionLabel: UILabel?
     @IBOutlet weak var abilitiesLabel: UILabel?
     @IBOutlet weak var abilitiesDescriptionLabel: UILabel?
     
-    init?(coder: NSCoder, name: String, number: Int, spriteURL: String, type: String, abilities: String) {
+    init?(coder: NSCoder, name: String, number: Int, spriteURL: String, experience: Int, type: [Type], abilities: [Ability]) {
         pokemonName = name
         pokemonNumber = number
         pokemonSpriteURL = spriteURL
+        pokemonBaseExp = experience
         pokemonTypeDescription = type
         pokemonAbilitiesDescription = abilities
         super.init(coder:coder)
@@ -42,12 +46,13 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         nameLabel?.text = pokemonName
-        numberLabel?.text = String(pokemonNumber)
-       //spriteImageView.image = pokemonSprite
+        numberLabel?.text = String("#\(pokemonNumber)")
+        baseExpLabel?.text = "Base Experience:"
+        baseExpDescriptionLabel?.text = String(pokemonBaseExp)
         typeLabel?.text = "Type"
-        typeDescriptionLabel?.text = pokemonAbilitiesDescription
+        typeDescriptionLabel?.text = pokemonTypeDescription.description
         abilitiesLabel?.text = "Abilities"
-        abilitiesDescriptionLabel?.text = pokemonAbilitiesDescription
+        abilitiesDescriptionLabel?.text = pokemonAbilitiesDescription.description
         
         networkCall(imageURL: pokemonSpriteURL)
         
@@ -85,7 +90,6 @@ extension DetailViewController {
             DispatchQueue.main.async {
                 // Set image to image View
                 let imageData = UIImage(data: data)!
-                //self.sprites.append(imageData)
                 self.spriteImageView?.image = imageData
             }
         }
@@ -96,13 +100,8 @@ extension DetailViewController {
         let decoder = JSONDecoder()
         
         if let jsonResults = try? decoder.decode(PokemonDetails.self, from: json) {
-            //pokemon = jsonResults.results
-            //sprite.append(contentsOf: jsonResults.sprites)
             sprite = jsonResults.sprites
             fetchImage(urlString: (sprite?.front_default)!)
-            //spriteURLList.append(sprite!)
-            
-            //view.reloadInputViews()
         }
     }
 }
