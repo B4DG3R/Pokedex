@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Type: Codable {
+struct type: Codable {
     var type: TypeDetails
 }
