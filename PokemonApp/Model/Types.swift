@@ -8,5 +8,5 @@
 import Foundation
 
 struct Types: Codable {
-    var types: [Type]
+    var types: [type]
 }

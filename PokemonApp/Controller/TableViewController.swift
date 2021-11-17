@@ -11,25 +11,26 @@ private let reuseIdentifier = "NameCell"
 
 class TableViewController: UITableViewController {
     
-    var pokemon: [Result] = []
-    var sprite: Sprite?
+    var pokemon:                    [Result] = []
+    var sprite:                     Sprite?
     
     // Holds list of sprite URLs to be passed to the nameCell class
-    var spriteURLList: [String] = []
-    var sprites: [UIImage] = []
-    var count = 0
+    var spriteURLList:              [String] = []
+    var sprites:                    [UIImage] = []
+    var count =                     0
     
-    var nameURL: String?
-    var imageURL: String?
+    var nameURL:                    String?
+    var imageURL:                   String?
     
     // Cell tapped data
-    var pokemonNumber: Int?
-    var pokemonBaseExp: Int?
-    var pokemonType: [Type] = []
-    var pokemonTypeDetails: [TypeDetails] = []
-    var pokemonAbilities: [Ability] = []
+    var pokemonNumber:              Int?
+    var pokemonBaseExp:             Int?
+    var pokemonType:                [type] = []
+    var pokemonTypeDetails:         [String] = []
+    var pokemonAbilities:           [Ability] = []
+    var pokemonAbilityDetails:      [Ability] = []
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel:   UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,10 +137,13 @@ class TableViewController: UITableViewController {
             pokemonBaseExp = jsonResults.base_experience
             pokemonAbilities = jsonResults.abilities
             pokemonNumber = jsonResults.id
-        }
-        
+            
+        }        
+                
         if let jsonResults = try? decoder.decode(Types.self, from: json) {
+            
             pokemonType = jsonResults.types
+            
         }
     }
 }

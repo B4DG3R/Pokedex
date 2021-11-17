@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		234EDFF526D8388500FE6BCA /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EDFF426D8388500FE6BCA /* Type.swift */; };
+		234EDFF526D8388500FE6BCA /* type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EDFF426D8388500FE6BCA /* type.swift */; };
 		234EDFF726D8B45D00FE6BCA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EDFF626D8B45D00FE6BCA /* Types.swift */; };
 		234EDFF926D8B4E600FE6BCA /* TypeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EDFF826D8B4E600FE6BCA /* TypeDetails.swift */; };
 		234EDFFD26D8C58500FE6BCA /* PokemonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EDFFC26D8C58500FE6BCA /* PokemonDetails.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		234EDFF426D8388500FE6BCA /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
+		234EDFF426D8388500FE6BCA /* type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = type.swift; sourceTree = "<group>"; };
 		234EDFF626D8B45D00FE6BCA /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		234EDFF826D8B4E600FE6BCA /* TypeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDetails.swift; sourceTree = "<group>"; };
 		234EDFFC26D8C58500FE6BCA /* PokemonDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetails.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 				23C0AAC526D590FC0081E12A /* Forms.swift */,
 				23C0AABE26D449480081E12A /* Form.swift */,
 				234EDFF626D8B45D00FE6BCA /* Types.swift */,
-				234EDFF426D8388500FE6BCA /* Type.swift */,
+				234EDFF426D8388500FE6BCA /* type.swift */,
 				234EDFF826D8B4E600FE6BCA /* TypeDetails.swift */,
 				23C0AAC726D593430081E12A /* Results.swift */,
 				23C0AAC926D593790081E12A /* Result.swift */,
@@ -208,7 +208,7 @@
 			files = (
 				23C0AAA926D43EAD0081E12A /* TableViewController.swift in Sources */,
 				23C0AAD026D59FA60081E12A /* Sprite.swift in Sources */,
-				234EDFF526D8388500FE6BCA /* Type.swift in Sources */,
+				234EDFF526D8388500FE6BCA /* type.swift in Sources */,
 				23C0AAC426D4BDA90081E12A /* NameCell.swift in Sources */,
 				23C0AAB926D444AF0081E12A /* Abilities.swift in Sources */,
 				23C0AABD26D448660081E12A /* AbilityDetails.swift in Sources */,
